@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" width="320" height="64" role="img" aria-labelledby="t">
+  <title id="t">BLEWCHAT</title>
+  <style>
+    /* CHANGE THE WORDMARK FONT HERE. System fonts only when loaded as an image; inline the SVG in a page to use a web font. */
+    text { font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif; font-weight: 800; font-size: 46px; letter-spacing: 2px; }
+  </style>
+  <text x="2" y="48" fill="#62DDF3">BLEWCHAT<tspan fill="#F05265">.</tspan></text>
+</svg>

@@ -1,48 +1,370 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090a18"><title>BlewChat — Find your people</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BLEWCHAT</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <style>
-:root{--bg:#090a18;--p:#151831;--p2:#1d2141;--line:#303453;--t:#f5f5ff;--m:#a4a9c8;--blue:#7188ff;--mint:#70f5c6;--coral:#ff8c9d}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 12% 0,#29244f,transparent 35%),radial-gradient(ellipse at 100% 10%,#15384b,transparent 32%),var(--bg);color:var(--t);font-family:"DM Sans",sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer;border:0}button:disabled{opacity:.5}.hidden{display:none!important}.muted{color:var(--m)}.small{font-size:.82rem}.brand{font:700 1.5rem "Space Grotesk";letter-spacing:-1px}.brand b{color:var(--mint)}header{display:flex;justify-content:space-between;align-items:center;padding:16px clamp(14px,4vw,46px);border-bottom:1px solid #ffffff17;position:sticky;top:0;background:#090a18e8;backdrop-filter:blur(15px);z-index:5}.pill{border-radius:999px;padding:11px 16px;font-weight:700}.primary{background:linear-gradient(120deg,var(--mint),#b1f8ff);color:#080a19}.secondary{background:var(--p2);color:var(--t);border:1px solid var(--line)}.wrap{max-width:1120px;margin:auto;padding:25px 16px 70px}.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:25px;align-items:center;margin-bottom:28px}.hero h1{font:700 clamp(2.5rem,6vw,4.8rem)/.98 "Space Grotesk";letter-spacing:-.06em;margin:14px 0}.gradient{background:linear-gradient(100deg,var(--mint),#879cff,#d4a4ff);color:transparent;background-clip:text}.hero p{color:var(--m);line-height:1.7;max-width:540px}.eyebrow{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--mint)}.art{height:245px;border:1px solid #ffffff20;border-radius:28px;position:relative;display:grid;place-items:center;overflow:hidden;background:linear-gradient(140deg,#2a2657,#151c3b,#123b40)}.orb{width:150px;height:150px;border-radius:48% 52% 64% 36%;background:linear-gradient(135deg,var(--mint),var(--blue),var(--coral));filter:drop-shadow(0 0 35px #8d8aff80);animation:float 5s ease-in-out infinite}.spark{position:absolute;font-size:2rem}.s1{left:13%;top:15%;color:#d7ff70}.s2{right:15%;top:19%;color:var(--coral)}.s3{right:19%;bottom:12%;color:var(--mint)}.art label{position:absolute;bottom:15px;left:15px;background:#080a1ddd;border:1px solid #ffffff20;border-radius:12px;padding:10px;font-weight:700}.layout{display:grid;grid-template-columns:210px minmax(0,1fr) 220px;gap:16px;align-items:start}.panel{background:linear-gradient(155deg,#171a34f5,#101226f5);border:1px solid #ffffff16;border-radius:20px;padding:17px;box-shadow:0 15px 45px #0002}.nav{position:sticky;top:82px}.nav button{width:100%;text-align:left;background:transparent;color:var(--m);padding:13px;border-radius:12px;font-weight:700;margin:3px 0}.nav button.active,.nav button:hover{background:#7188ff22;color:var(--t)}h2,h3{font-family:"Space Grotesk"}.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px}.sectionhead h2{font-size:1.25rem;margin:5px 0}.field{width:100%;background:#090b1b;border:1px solid var(--line);color:var(--t);border-radius:12px;padding:12px;outline:none}.field:focus{border-color:var(--blue)}textarea.field{min-height:90px;resize:vertical}.composer{margin-bottom:14px}.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.avatar{width:40px;height:40px;flex-shrink:0;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#6c7cff,#b87dff);font-weight:700;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover}.post{margin-bottom:13px}.postbody{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65;margin:14px 0}.posttime{font-size:.76rem;color:var(--m);margin-top:3px}.tiny{background:#ffffff0b;color:var(--m);border:1px solid #ffffff16;padding:7px 10px;border-radius:10px;font-size:.82rem}.member{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #ffffff12}.member:last-child{border:0}.grow{flex:1;min-width:0}.membername{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}.empty{padding:25px 10px;text-align:center;color:var(--m);line-height:1.6}.tag{display:inline-block;border:1px solid #70f5c633;background:#70f5c614;color:var(--mint);border-radius:999px;padding:7px 10px;font-size:.75rem;font-weight:700}.auth{max-width:450px;margin:30px auto}.auth .panel{padding:24px}.auth h2{font-size:2rem;margin:10px 0}.stack{display:grid;gap:12px}.status{font-size:.84rem;min-height:20px;color:var(--mint);margin-top:7px}.error{color:var(--coral)}.authswitch{color:var(--mint);background:none;font-weight:700;padding:0}.rightcard{margin-bottom:13px}.footer{text-align:center;color:#777da2;font-size:.78rem;margin:30px 0}.messages{display:grid;grid-template-columns:.75fr 1.3fr;gap:12px;min-height:420px}.people{border-right:1px solid #ffffff16;padding-right:8px}.person{display:flex;align-items:center;gap:8px;padding:9px;border-radius:11px;background:transparent;color:var(--t);text-align:left;width:100%}.person.active,.person:hover{background:#7188ff25}.person .avatar{width:33px;height:33px;border-radius:11px}.chat{display:flex;flex-direction:column;min-width:0}.chatmsgs{flex:1;min-height:240px;max-height:420px;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:5px 0 12px}.bubble{max-width:85%;align-self:flex-start;background:#252a4b;padding:10px 12px;border-radius:14px 14px 14px 4px;white-space:pre-wrap;overflow-wrap:anywhere}.bubble.mine{align-self:flex-end;background:linear-gradient(135deg,#586ff0,#7d65dc);border-radius:14px 14px 4px 14px}.bubble small{display:block;opacity:.65;font-size:.68rem;margin-top:5px}.chatform{display:flex;gap:7px}.chatform input{min-width:0}.mobile{display:none}@keyframes float{50%{transform:translateY(-12px) rotate(-10deg)}}@media(max-width:900px){.layout{grid-template-columns:180px minmax(0,1fr)}.rightcol{display:none}}@media(max-width:650px){header{padding:13px}.brand{font-size:1.3rem}.wrap{padding:17px 11px 85px}.hero{grid-template-columns:1fr;gap:13px}.hero h1{font-size:2.8rem}.hero p{font-size:.95rem}.art{height:145px}.orb{width:95px;height:95px}.layout{display:block}.nav,.rightcol{display:none}.mainview{display:none}.mainview.current{display:block}.panel{padding:14px}.messages{grid-template-columns:1fr}.people{display:flex;overflow-x:auto;border:0;border-bottom:1px solid #ffffff16;padding:0 0 8px}.person{width:auto;flex-shrink:0}.mobile{display:flex;position:fixed;z-index:8;bottom:0;left:0;right:0;justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom));background:#0b0d20f5;backdrop-filter:blur(14px);border-top:1px solid #ffffff18}.mobile button{background:none;color:var(--m);font-size:.72rem;display:grid;justify-items:center;gap:3px;padding:5px}.mobile button.active{color:var(--mint)}.mobile span{font-size:1.2rem}.auth{margin:18px auto}}
-</style></head><body>
-<header><div class="brand"><span style="color:#8295ff">Blew</span>Chat<b>.</b></div><div class="row"><span id="headerUser" class="muted small"></span><button id="headerAuth" class="pill primary">Join BlewChat</button><button id="signout" class="pill secondary hidden">Sign out</button></div></header>
-<main class="wrap">
-<section id="hero" class="hero"><div><span class="eyebrow">A little louder. A lot more you.</span><h1>Your people.<br><span class="gradient">Your corner</span><br>of the internet.</h1><p>Drop a thought, find a mind that matches yours, or take the conversation private. Welcome to the beautifully unpredictable side of social.</p><button id="heroJoin" class="pill primary">Get started ↗</button> <span class="tag">✦ Made for connection</span></div><div class="art"><span class="spark s1">✳</span><span class="spark s2">✦</span><span class="spark s3">✧</span><div class="orb"></div><label>Good conversations live here ↗</label></div></section>
-<section id="auth" class="auth hidden"><div class="panel"><span class="eyebrow">Come on in</span><h2 id="authTitle">Create your account.</h2><p id="authDesc" class="muted">A username, an email, and you're part of the conversation.</p><form id="authForm" class="stack"><label id="userWrap">Username<input id="username" class="field" minlength="3" maxlength="24" autocomplete="username" placeholder="yourname" required></label><label>Email<input id="email" type="email" class="field" autocomplete="email" required placeholder="you@example.com"></label><label>Password<input id="password" type="password" class="field" minlength="6" required autocomplete="current-password" placeholder="At least 6 characters"></label><button id="authSubmit" class="pill primary" type="submit">Create account</button></form><div id="authStatus" class="status"></div><p class="muted small"><span id="switchText">Already here?</span> <button id="switchAuth" class="authswitch">Sign in</button></p><button id="back" class="tiny">← Back to home</button></div></section>
-<section id="app" class="hidden"><div class="layout"><aside class="panel nav"><div class="eyebrow">Your space</div><br><button class="active" data-view="feed">✳ &nbsp; Community feed</button><button data-view="messages">✉ &nbsp; Messages</button><button data-view="people">⌕ &nbsp; Find people</button><button data-view="profile">◉ &nbsp; Your profile</button><p class="muted small" style="line-height:1.6;margin-top:25px">Be curious. Be kind. Block anyone who makes your corner feel smaller.</p></aside>
-<div id="view-feed" class="mainview current"><div class="sectionhead"><div><div class="eyebrow">The town square</div><h2>Community feed</h2></div><span class="tag">✦ Live feed</span></div><div class="panel composer"><form id="postForm"><textarea id="postContent" class="field" maxlength="1200" placeholder="What's on your mind? Share a thought, a question, a tiny revelation…" required></textarea><div class="row between" style="margin-top:10px"><span class="muted small">1,200 characters max.</span><button class="pill primary" type="submit">Post it ↗</button></div></form></div><div id="feed"><div class="panel empty">Loading conversations…</div></div></div>
-<div id="view-messages" class="mainview hidden"><div class="sectionhead"><div><div class="eyebrow">One conversation at a time</div><h2>Your messages</h2></div></div><div class="panel messages"><div class="people" id="chatPeople"><span class="muted small">Find someone to message.</span></div><div class="chat"><h3 id="chatTitle">Choose a conversation</h3><div id="chatMessages" class="chatmsgs"><div class="empty">Select a person to start talking.</div></div><form id="messageForm" class="chatform"><input id="messageInput" class="field" maxlength="2000" placeholder="Write a message…" required disabled><button id="sendMessage" class="pill primary" disabled>Send</button></form><div id="messageStatus" class="status"></div></div></div></div>
-<div id="view-people" class="mainview hidden"><div class="sectionhead"><div><div class="eyebrow">Your next great conversation</div><h2>Find people</h2></div></div><div class="panel"><input id="search" class="field" placeholder="Search usernames or names…"><div id="peopleList" style="margin-top:10px"><div class="empty">Search for a person to get started.</div></div></div></div>
-<div id="view-profile" class="mainview hidden"><div class="sectionhead"><div><div class="eyebrow">Your corner, your rules</div><h2>Your profile</h2></div></div><div class="panel"><form id="profileForm" class="stack"><label>Username<input id="pUsername" class="field" minlength="3" maxlength="24" required></label><label>Display name<input id="pDisplay" class="field" maxlength="50"></label><label>Avatar image URL<input id="pAvatar" class="field" type="url" placeholder="https://…"></label><label>Bio<textarea id="pBio" class="field" maxlength="240"></textarea></label><button class="pill primary">Save profile</button></form><div id="profileStatus" class="status"></div><hr style="border:0;border-top:1px solid #ffffff17;margin:20px 0"><h3>Blocked people</h3><div id="blockedList" class="muted small">Loading…</div></div></div>
-<aside class="rightcol"><div class="panel rightcard"><div class="eyebrow">A fresh start</div><h3>Make yourself at home.</h3><p class="muted small" style="line-height:1.7">A good post can start a friendship. A thoughtful message can change a day. Start with one small hello.</p><button class="pill secondary" data-goto="people">Find your people</button></div><div class="panel rightcard"><h3>Good reminders</h3><p class="muted small">✦ Your voice belongs here.</p><p class="muted small">✦ Private means private.</p><p class="muted small">✦ You can block and unblock people.</p></div></aside></div></section>
-<nav id="mobile" class="mobile hidden"><button class="active" data-view="feed"><span>✳</span>Feed</button><button data-view="messages"><span>✉</span>Messages</button><button data-view="people"><span>⌕</span>People</button><button data-view="profile"><span>◉</span>Profile</button></nav><div class="footer">BlewChat · Make room for good conversations.</div></main>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
-(()=>{const URL="https://oyopdidnsaqimshgylmx.supabase.co",KEY="sb_publishable_dQT8YjQg-OTVTK6gmZl1qQ_XA9uqXmf",db=window.supabase.createClient(URL,KEY),$=id=>document.getElementById(id);let user=null,profile=null,mode="signup",view="feed",selected=null,blocked=new Set(),channel=null;
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])), initials=p=>(p?.display_name||p?.username||"?").slice(0,2).toUpperCase(),avatar=p=>`<div class="avatar">${p?.avatar_url?`<img src="${esc(p.avatar_url)}" alt="">`:esc(initials(p))}</div>`,time=t=>{try{return new Date(t).toLocaleString([],{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})}catch{return""}},msg=(id,s,e=false)=>{$(id).textContent=s;$(id).classList.toggle("error",e)},toast=s=>{msg("messageStatus",s);setTimeout(()=>msg("messageStatus",""),2800)};
-function authScreen(m="signup") {mode=m;$("hero").classList.add("hidden");$("app").classList.add("hidden");$("mobile").classList.add("hidden");$("auth").classList.remove("hidden");$("authTitle").textContent=m==="signup"?"Create your account.":"Welcome back."; $("authDesc").textContent=m==="signup"?"A username, an email, and you're part of the conversation.":"Sign in and pick up where you left off."; $("userWrap").classList.toggle("hidden",m!=="signup");$("username").required=m==="signup";$("authSubmit").textContent=m==="signup"?"Create account":"Sign in";$("switchText").textContent=m==="signup"?"Already here?":"New to BlewChat?";$("switchAuth").textContent=m==="signup"?"Sign in":"Create an account";msg("authStatus","")}
-function home(){$("hero").classList.remove("hidden");$("auth").classList.add("hidden");$("app").classList.add("hidden");$("mobile").classList.add("hidden")}
-function appScreen(){ $("hero").classList.add("hidden");$("auth").classList.add("hidden");$("app").classList.remove("hidden");$("mobile").classList.remove("hidden");$("headerAuth").classList.add("hidden");$("signout").classList.remove("hidden");$("headerUser").textContent="@"+(profile?.username||"member");go(view)}
-function go(v){view=v;document.querySelectorAll(".mainview").forEach(e=>{e.classList.toggle("hidden",e.id!=="view-"+v);e.classList.toggle("current",e.id==="view-"+v)});document.querySelectorAll("[data-view]").forEach(e=>e.classList.toggle("active",e.dataset.view===v));if(v==="feed")loadFeed();if(v==="people")loadPeople();if(v==="messages")loadChatPeople();if(v==="profile"){fillProfile();loadBlocked()}}
-async function getProfile(id){let r=await db.from("profiles").select("*").eq("id",id).maybeSingle();return r.data}
-async function session(){let {data:{session}}=await db.auth.getSession();if(!session){user=null;profile=null;home();return}user=session.user;profile=await getProfile(user.id);if(!profile){let un=(user.user_metadata?.username||user.email?.split("@")[0]||"member").replace(/[^a-zA-Z0-9_]/g,"").slice(0,24);await db.from("profiles").upsert({id:user.id,username:un.length>=3?un:"member_"+user.id.slice(0,6),display_name:un},{onConflict:"id"});profile=await getProfile(user.id)}if(profile){appScreen();loadFeed()}else{authScreen("signin");msg("authStatus","Profile table is not available. Check the Supabase setup.",true)}}
-async function refreshBlocked(){blocked.clear();let r=await db.from("blocks").select("blocked_id").eq("blocker_id",user.id);(r.data||[]).forEach(x=>blocked.add(x.blocked_id))}
-async function loadFeed(){if(!user)return;let out=$("feed");out.innerHTML='<div class="panel empty">Loading…</div>';let r=await db.from("posts").select("id,user_id,body,created_at").order("created_at",{ascending:false}).limit(50);if(r.error){out.innerHTML=`<div class="panel empty">Feed error: ${esc(r.error.message)}<br>Check schema and RLS policies.</div>`;return}let rows=r.data||[];if(!rows.length){out.innerHTML='<div class="panel empty">The feed is gloriously quiet. Be the first to say something. ✦</div>';return}let ids=[...new Set(rows.map(x=>x.user_id))],pr=await db.from("profiles").select("id,username,display_name,avatar_url").in("id",ids),map=new Map((pr.data||[]).map(x=>[x.id,x]));out.innerHTML=rows.map(p=>{let a=map.get(p.user_id)||{username:"member"};return `<article class="panel post"><div class="row">${avatar(a)}<div class="grow"><b>${esc(a.display_name||a.username)}</b><div class="posttime">@${esc(a.username)} · ${esc(time(p.created_at))}</div></div>${p.user_id!==user.id?`<button class="tiny" data-block="${p.user_id}">Block</button>`:""}</div><div class="postbody">${esc(p.body)}</div>${p.user_id!==user.id?`<button class="tiny" data-message="${p.user_id}">✉ Message</button>`:""}</article>`}).join("")}
-async function loadPeople(){if(!user)return;let term=$("search").value.trim();let q=db.from("profiles").select("id,username,display_name,bio,avatar_url").neq("id",user.id).order("username").limit(50);if(term)q=q.or(`username.ilike.%${term}%,display_name.ilike.%${term}%`);let r=await q;if(r.error){$("peopleList").innerHTML=`<div class="empty">${esc(r.error.message)}</div>`;return}await refreshBlocked();let rows=(r.data||[]).filter(p=>!blocked.has(p.id));$("peopleList").innerHTML=rows.length?rows.map(p=>`<div class="member">${avatar(p)}<div class="grow"><div class="membername">${esc(p.display_name||p.username)}</div><div class="muted small">@${esc(p.username)} ${esc(p.bio||"")}</div></div><button class="tiny" data-message="${p.id}">Message</button></div>`).join(""):'<div class="empty">No members found.</div>'}
-async function loadChatPeople(){if(!user)return;let r=await db.from("profiles").select("id,username,display_name,avatar_url").neq("id",user.id).order("username").limit(60);if(r.error){$("chatPeople").textContent=r.error.message;return}await refreshBlocked();let rows=(r.data||[]).filter(p=>!blocked.has(p.id));$("chatPeople").innerHTML=rows.map(p=>`<button class="person ${selected?.id===p.id?"active":""}" data-person="${p.id}">${avatar(p)}<span>${esc(p.display_name||p.username)}</span></button>`).join("")||'<div class="muted small">No members yet. Search for people.</div>'}
-async function choosePerson(id){let r=await db.from("profiles").select("id,username,display_name,avatar_url").eq("id",id).maybeSingle();if(r.error||!r.data){toast("Profile unavailable.");return}selected=r.data;$("chatTitle").textContent=selected.display_name||"@"+selected.username;$("messageInput").disabled=false;$("sendMessage").disabled=false;await loadChatPeople();await loadMessages();if(channel)db.removeChannel(channel);channel=db.channel("dm-"+[user.id,id].sort().join("-")).on("postgres_changes",{event:"INSERT",schema:"public",table:"messages"},p=>{if(selected&&(p.new.sender_id===selected.id||p.new.recipient_id===selected.id))loadMessages()}).subscribe()}
-async function loadMessages(){if(!user||!selected)return;let other=selected.id,r=await db.from("messages").select("id,sender_id,recipient_id,body,created_at").or(`and(sender_id.eq.${user.id},recipient_id.eq.${other}),and(sender_id.eq.${other},recipient_id.eq.${user.id})`).order("created_at").limit(100);if(r.error){$("chatMessages").innerHTML=`<div class="empty">${esc(r.error.message)}</div>`;return}let rows=r.data||[];$("chatMessages").innerHTML=rows.length?rows.map(m=>`<div class="bubble ${m.sender_id===user.id?"mine":""}">${esc(m.body)}<small>${esc(time(m.created_at))}</small></div>`).join(""):'<div class="empty">No messages yet. Send the first hello. 👋</div>';$("chatMessages").scrollTop=$("chatMessages").scrollHeight}
-function fillProfile(){if(!profile)return;$("pUsername").value=profile.username||"";$("pDisplay").value=profile.display_name||"";$("pAvatar").value=profile.avatar_url||"";$("pBio").value=profile.bio||""}
-async function loadBlocked(){let r=await db.from("blocks").select("blocked_id").eq("blocker_id",user.id);if(r.error){$("blockedList").textContent="Could not load blocked people.";return}let ids=(r.data||[]).map(x=>x.blocked_id);if(!ids.length){$("blockedList").textContent="You haven't blocked anyone.";return}let p=await db.from("profiles").select("id,username,display_name").in("id",ids);$("blockedList").innerHTML=(p.data||[]).map(x=>`<div class="member"><div class="grow">${esc(x.display_name||x.username)} <span class="muted small">@${esc(x.username)}</span></div><button class="tiny" data-unblock="${x.id}">Unblock</button></div>`).join("")}
-async function block(id){if(!confirm("Block this member? You won't be able to message each other while blocked."))return;let r=await db.from("blocks").upsert({blocker_id:user.id,blocked_id:id},{onConflict:"blocker_id,blocked_id"});if(r.error){toast(r.error.message);return}if(selected?.id===id){selected=null;$("chatTitle").textContent="Choose a conversation";$("chatMessages").innerHTML='<div class="empty">Select a person to start talking.</div>';$("messageInput").disabled=true;$("sendMessage").disabled=true}await refreshBlocked();toast("Member blocked.");if(view==="feed")loadFeed();if(view==="people")loadPeople();if(view==="messages")loadChatPeople();if(view==="profile")loadBlocked()}
-async function unblock(id){let r=await db.from("blocks").delete().eq("blocker_id",user.id).eq("blocked_id",id);if(r.error){toast(r.error.message);return}await loadBlocked();await loadPeople()}
-$("headerAuth").onclick=$("heroJoin").onclick=()=>authScreen("signup");$("back").onclick=home;$("switchAuth").onclick=()=>authScreen(mode==="signup"?"signin":"signup");
-$("authForm").onsubmit=async e=>{e.preventDefault();$("authSubmit").disabled=true;msg("authStatus","Working…");try{let r;if(mode==="signup"){let un=$("username").value.trim().replace(/^@/,"");if(!/^[a-zA-Z0-9_]{3,24}$/.test(un))throw Error("Username must be 3–24 letters, numbers, or underscores.");r=await db.auth.signUp({email:$("email").value.trim(),password:$("password").value,options:{data:{username:un,display_name:un}}})}else r=await db.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});if(r.error)throw r.error;if(mode==="signup"&&!r.data.session){msg("authStatus","Account created. Check your email for a confirmation link, then sign in.");return}await session()}catch(err){msg("authStatus",err.message||"Something went wrong.",true)}finally{$("authSubmit").disabled=false}};
-$("signout").onclick=async()=>{await db.auth.signOut();if(channel)db.removeChannel(channel);user=null;profile=null;selected=null;$("headerAuth").classList.remove("hidden");$("signout").classList.add("hidden");$("headerUser").textContent="";home()};
-$("postForm").onsubmit=async e=>{e.preventDefault();let content=$("postContent").value.trim();if(!content)return;let r=await db.from("posts").insert({user_id:user.id,body:content});if(r.error){toast(r.error.message);return}$("postContent").value="";loadFeed()};
-$("profileForm").onsubmit=async e=>{e.preventDefault();let un=$("pUsername").value.trim().replace(/^@/,""),url=$("pAvatar").value.trim();if(!/^[a-zA-Z0-9_]{3,24}$/.test(un)){msg("profileStatus","Username must be 3–24 letters, numbers, or underscores.",true);return}if(url&&!/^https?:\/\//i.test(url)){msg("profileStatus","Avatar URL must begin with http:// or https://.",true);return}let r=await db.from("profiles").update({username:un,display_name:$("pDisplay").value.trim()||un,avatar_url:url||null,bio:$("pBio").value.trim()}).eq("id",user.id).select().maybeSingle();if(r.error){msg("profileStatus",r.error.message,true);return}profile=r.data||await getProfile(user.id);$("headerUser").textContent="@"+profile.username;msg("profileStatus","Profile saved.")};
-$("search").oninput=()=>{clearTimeout(window.searchTimer);window.searchTimer=setTimeout(loadPeople,250)};
-$("messageForm").onsubmit=async e=>{e.preventDefault();if(!selected)return;let content=$("messageInput").value.trim();if(!content)return;let r=await db.from("messages").insert({sender_id:user.id,recipient_id:selected.id,body:content});if(r.error){msg("messageStatus",r.error.message,true);return}$("messageInput").value="";msg("messageStatus","");loadMessages()};
-document.addEventListener("click",e=>{let v=e.target.closest("[data-view]");if(v){if(user)go(v.dataset.view);else authScreen();return}let g=e.target.closest("[data-goto]");if(g){go(g.dataset.goto);return}let m=e.target.closest("[data-message]");if(m){go("messages");choosePerson(m.dataset.message);return}let p=e.target.closest("[data-person]");if(p){choosePerson(p.dataset.person);return}let b=e.target.closest("[data-block]");if(b){block(b.dataset.block);return}let u=e.target.closest("[data-unblock]");if(u){unblock(u.dataset.unblock);return}});
-db.auth.onAuthStateChange((ev,s)=>{if(ev==="SIGNED_OUT"){user=null;profile=null;home()}else if(ev==="SIGNED_IN"&&s?.user&&!user)setTimeout(session,0)});
-db.channel("blewchat-posts").on("postgres_changes",{event:"*",schema:"public",table:"posts"},()=>{if(view==="feed"&&user)loadFeed()}).subscribe();session();
+  /* INTERFACE FONT: change --font here (one place). The logo/wordmark fonts live in assets/wordmark.svg */
+  :root { --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --cyan:#62DDF3; --purple:#8B5CF6; --red:#F05265; --on-cyan:#04202a;
+    --bg:#0a1220; --panel:#111c30; --line:#22324d; --text:#eaf3fb; --mute:#9db0c8; --link:#62DDF3; }
+  @media (prefers-color-scheme: light) { :root { --bg:#f1f7fb; --panel:#fff; --line:#d3e0ec; --text:#0d1b2a; --mute:#4c607a; --link:#0b6f86; } }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body { background: var(--bg); color: var(--text); font: 16px/1.45 var(--font); overflow-x: hidden; }
+  .hidden { display: none !important; }
+  button, input, textarea { font: inherit; color: inherit; }
+  input, textarea { width: 100%; padding: 12px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; outline: none; }
+  input:focus, textarea:focus, button:focus-visible, a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+  textarea { resize: vertical; min-height: 84px; }
+  button { cursor: pointer; border: 0; border-radius: 12px; padding: 11px 18px; background: var(--cyan); color: var(--on-cyan); font-weight: 700; }
+  button:disabled { opacity: .5; cursor: default; }
+  button.alt { background: transparent; color: var(--text); border: 1px solid var(--line); font-weight: 600; padding: 8px 12px; }
+  button.sel { border-color: var(--purple); background: var(--purple); color: #fff; }
+  button.danger { color: var(--red); border-color: var(--red); background: transparent; }
+  a { color: var(--link); }
+  .note { min-height: 1.3em; margin: 10px 0 0; font-size: .92rem; color: var(--mute); }
+  .note.err { color: var(--red); }
+
+  #offline { background: var(--red); color: #fff; text-align: center; padding: 6px; font-size: .9rem; }
+  #intro { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 24px; text-align: center;
+    background: radial-gradient(circle at 50% 30%, #123a52 0%, #0a1220 65%); color: #eaf3fb; }
+  #intro img.mark { width: min(46vw, 200px); animation: rise .7s ease-out both; }
+  #intro img.word { width: min(78vw, 340px); margin-top: 14px; }
+  #intro p { margin: 18px auto 26px; max-width: 22ch; font-size: 1.15rem; border-top: 2px solid var(--purple); padding-top: 14px; }
+  #intro button { padding: 14px 28px; font-size: 1.05rem; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px) scale(.96); } }
+  @media (prefers-reduced-motion: reduce) { #intro img.mark { animation: none; } }
+
+  #auth { min-height: 100%; display: grid; place-items: center; padding: 24px; }
+  .card { width: 100%; max-width: 380px; }
+  .card img { display: block; width: 70%; margin: 0 auto 22px; }
+  form.stack { display: grid; gap: 10px; }
+  .links { display: flex; justify-content: space-between; margin-top: 12px; font-size: .92rem; }
+  .links button { background: none; color: var(--link); padding: 4px; font-weight: 600; }
+
+  #app { height: 100%; display: flex; flex-direction: column; max-width: 720px; margin: 0 auto; }
+  header { background: #0a1220; border-bottom: 2px solid var(--purple); display: flex; align-items: center; gap: 8px; padding: 10px 14px; padding-top: calc(10px + env(safe-area-inset-top)); }
+  header button.logo { background: none; padding: 0; line-height: 0; border-radius: 6px; }
+  header img { height: 26px; }
+  header .sp { flex: 1; }
+  nav { display: flex; gap: 8px; padding: 10px 14px; }
+  nav button { flex: 1; }
+  main { flex: 1; overflow-y: auto; padding: 0 14px 14px; padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
+  .box { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 14px; margin-bottom: 12px; }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta { font-size: .85rem; color: var(--mute); }
+  .meta b { color: var(--text); }
+  .text { white-space: pre-wrap; overflow-wrap: anywhere; margin: 8px 0; }
+  .media { position: relative; display: block; width: 100%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; background: #000; margin: 8px 0; border: 0; padding: 0; }
+  .media img, .media iframe { width: 100%; height: 100%; border: 0; object-fit: cover; }
+  .media .play { position: absolute; inset: 0; margin: auto; width: 62px; height: 62px; border-radius: 50%; background: var(--cyan); color: var(--on-cyan); display: grid; place-items: center; font-size: 1.5rem; }
+  .empty { text-align: center; color: var(--mute); padding: 28px 10px; }
+  .thread { display: flex; flex-direction: column; gap: 8px; }
+  .bub { max-width: 82%; padding: 8px 12px; border-radius: 16px 16px 16px 4px; background: var(--panel); border: 1px solid var(--line); overflow-wrap: anywhere; white-space: pre-wrap; }
+  .bub.me { align-self: flex-end; border-radius: 16px 16px 4px 16px; background: var(--cyan); color: var(--on-cyan); border-color: var(--cyan); }
+  .bub small { display: block; opacity: .7; font-size: .72rem; margin-top: 2px; }
+  .convo { width: 100%; text-align: left; background: var(--panel); color: var(--text); border: 1px solid var(--line); font-weight: 400; margin-bottom: 8px; padding: 12px 14px; }
+  .convo b { display: block; } .convo span { color: var(--mute); font-size: .88rem; }
+  .sticky { position: sticky; bottom: 0; background: var(--bg); padding-top: 8px; }
+</style>
+</head>
+<body>
+
+<div id="offline" class="hidden" role="status">You appear to be offline. Changes will not be saved.</div>
+
+<section id="intro" class="hidden" role="dialog" aria-modal="true" aria-label="Welcome to BLEWCHAT">
+  <div>
+    <img class="mark" src="assets/logo.svg" alt="BLEWCHAT logo">
+    <img class="word" src="assets/wordmark.svg" alt="BLEWCHAT">
+    <p>&ldquo;also another eccentric build from the King&rdquo;</p>
+    <button id="go" type="button">Enter BLEWCHAT</button>
+  </div>
+</section>
+
+<section id="auth" class="hidden">
+  <div class="card">
+    <img src="assets/wordmark.svg" alt="BLEWCHAT">
+    <form id="authForm" class="stack">
+      <input class="f" id="username" placeholder="Username (a–z, 0–9, _ ; 3–24)" autocomplete="username" maxlength="24" data-m="up">
+      <input class="f" id="display" placeholder="Display name (optional)" autocomplete="name" maxlength="50" data-m="up">
+      <input class="f" id="email" type="email" placeholder="Email" autocomplete="email" data-m="in up forgot">
+      <input class="f" id="password" type="password" placeholder="Password (8+ characters)" minlength="8" data-m="in up newpw">
+      <button id="submit" type="submit"></button>
+    </form>
+    <p id="authNote" class="note" role="status"></p>
+    <div class="links"><button type="button" id="swap" class="alt"></button><button type="button" id="forgot">Forgot password?</button></div>
+  </div>
+</section>
+
+<section id="app" class="hidden">
+  <header>
+    <button class="logo" id="brand" type="button" aria-label="About BLEWCHAT: replay welcome screen"><img src="assets/wordmark.svg" alt="BLEWCHAT"></button>
+    <span class="sp"></span>
+    <button class="alt" id="signout" type="button">Sign out</button>
+  </header>
+  <nav><button id="tabFeed" type="button">Feed</button><button id="tabChats" type="button">Chats</button></nav>
+  <main id="main"></main>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const h = (t, a = {}, ...c) => {
+    const e = document.createElement(t);
+    for (const [k, v] of Object.entries(a)) k.startsWith("on") ? (e[k] = v) : k === "class" ? (e.className = v) : e.setAttribute(k, v);
+    e.append(...c.filter((x) => x != null)); return e;
+  };
+  const when = (t) => new Date(t).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  const KEY = "blewchat_intro_done";
+  const store = { get: () => { try { return localStorage.getItem(KEY); } catch { return null; } }, set: () => { try { localStorage.setItem(KEY, "1"); } catch {} } };
+  const show = (id) => ["auth", "app"].forEach((x) => $("#" + x).classList.toggle("hidden", x !== id));
+  const note = (t, err) => { $("#authNote").textContent = t || ""; $("#authNote").className = "note" + (err ? " err" : ""); };
+
+  /* ----- intro (first visit; replay by tapping the header wordmark) ----- */
+  if (!store.get()) $("#intro").classList.remove("hidden");
+  $("#go").onclick = () => { store.set(); $("#intro").classList.add("hidden"); };
+  $("#brand").onclick = () => $("#intro").classList.remove("hidden");
+  const net = () => $("#offline").classList.toggle("hidden", navigator.onLine);
+  addEventListener("online", net); addEventListener("offline", net); net();
+
+  const cfg = window.BLEWCHAT_CONFIG || {};
+  if (!cfg.SUPABASE_URL || cfg.SUPABASE_URL.includes("YOUR-BLEWCHAT")) {
+    show("auth"); $("#authForm").classList.add("hidden");
+    note("Setup needed: add your new BLEWCHAT Supabase URL and anon key to config.js (see README).", true); return;
+  }
+  const sb = supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+  let me = null, recovering = false, channel = null, mode = "in";
+
+  /* ----- authentication ----- */
+  const labels = { in: "Sign in", up: "Create account", forgot: "Send reset link", newpw: "Set new password" };
+  function setMode(m) {
+    mode = m; note("");
+    document.querySelectorAll(".f").forEach((i) => { const on = i.dataset.m.split(" ").includes(m); i.classList.toggle("hidden", !on); i.required = on && i.id !== "display"; });
+    $("#submit").textContent = labels[m];
+    $("#swap").textContent = m === "up" ? "Have an account? Sign in" : "New here? Create account";
+    $("#swap").classList.toggle("hidden", m === "newpw"); $("#forgot").classList.toggle("hidden", m !== "in");
+    $("#password").autocomplete = m === "in" ? "current-password" : "new-password";
+  }
+  $("#swap").onclick = () => setMode(mode === "up" ? "in" : "up");
+  $("#forgot").onclick = () => setMode("forgot");
+  setMode("in");
+
+  $("#authForm").onsubmit = async (e) => {
+    e.preventDefault();
+    const email = $("#email").value.trim(), password = $("#password").value;
+    $("#submit").disabled = true; note("Working…");
+    try {
+      if (mode === "up") {
+        const username = $("#username").value.trim().toLowerCase();
+        if (!/^[a-z0-9_]{3,24}$/.test(username)) throw new Error("Username: 3–24 characters, letters a–z, digits and underscores only.");
+        const { data: free, error: chk } = await sb.rpc("username_available", { name: username });
+        if (chk) throw chk; if (!free) throw new Error("That username is already taken.");
+        const { data, error } = await sb.auth.signUp({ email, password, options: { emailRedirectTo: location.href.split("#")[0], data: { username, display_name: $("#display").value.trim() } } });
+        if (error) throw error;
+        note(data.session ? "Account created." : "Account created. Check your inbox to verify your email, then sign in.");
+      } else if (mode === "forgot") {
+        const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.href.split("#")[0] });
+        if (error) throw error; note("If that address is registered, a reset link is on its way.");
+      } else if (mode === "newpw") {
+        const { error } = await sb.auth.updateUser({ password });
+        if (error) throw error; recovering = false; setMode("in"); const { data } = await sb.auth.getSession(); if (data.session) start(data.session.user);
+      } else {
+        const { error } = await sb.auth.signInWithPassword({ email, password });
+        if (error) throw error; note("");
+      }
+    } catch (err) { note(/database error|duplicate|unique/i.test(err.message) ? "Could not create the account: that username or email may already be in use." : err.message, true); }
+    $("#submit").disabled = false;
+  };
+  $("#signout").onclick = () => sb.auth.signOut();
+
+  sb.auth.onAuthStateChange((ev, s) => {
+    if (ev === "PASSWORD_RECOVERY") { recovering = true; $("#intro").classList.add("hidden"); show("auth"); setMode("newpw"); return; }
+    if (recovering) return;
+    if (s?.user) { if (!me || me.id !== s.user.id) start(s.user); } else stop();
+  });
+
+  async function start(user) {
+    me = user; show("app"); tab("feed");
+  }
+  function stop() { me = null; if (channel) { sb.removeChannel(channel); channel = null; } show("auth"); setMode("in"); }
+
+  /* ----- tabs ----- */
+  const main = $("#main");
+  function tab(t) {
+    if (channel) { sb.removeChannel(channel); channel = null; }
+    $("#tabFeed").className = t === "feed" ? "sel" : "alt"; $("#tabChats").className = t === "chats" ? "sel" : "alt";
+    main.replaceChildren(); main.scrollTop = 0;
+    t === "feed" ? feed() : chats();
+  }
+  $("#tabFeed").onclick = () => tab("feed"); $("#tabChats").onclick = () => tab("chats");
+
+  /* ----- feed ----- */
+  const PAGE = 15;
+  function ytId(u) {
+    try {
+      const x = new URL(u), host = x.hostname.replace(/^(www|m)\./, ""); let id = null;
+      if (host === "youtu.be") id = x.pathname.slice(1);
+      else if (host === "youtube.com") id = x.searchParams.get("v") || (x.pathname.match(/^\/(?:shorts|embed)\/([\w-]{11})/) || [])[1];
+      return /^[\w-]{11}$/.test(id || "") ? id : null;
+    } catch { return null; }
+  }
+  function mediaEl(u) {
+    const id = ytId(u), link = h("a", { href: u, target: "_blank", rel: "noopener noreferrer" }, "Open original link ↗");
+    if (!id) { let host = u; try { host = new URL(u).hostname; } catch {} return h("div", { class: "meta" }, "🔗 ", link, " (" + host + ")"); }
+    const box = h("div");
+    const btn = h("button", { class: "media", type: "button", "aria-label": "Play video" },
+      h("img", { src: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`, alt: "Video thumbnail", loading: "lazy", onerror: function () { this.remove(); } }),
+      h("span", { class: "play" }, "▶"));
+    btn.onclick = () => btn.replaceWith(h("div", { class: "media" }, h("iframe", { src: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`, title: "Video player", allow: "autoplay; encrypted-media; picture-in-picture", allowfullscreen: "", referrerpolicy: "strict-origin-when-cross-origin" })));
+    box.append(btn, h("div", { class: "meta" }, "If the video will not play, ", link));
+    return box;
+  }
+  function feed() {
+    const body = h("textarea", { placeholder: "What is on your mind?", maxlength: "2000", "aria-label": "Post text" });
+    const link = h("input", { type: "url", placeholder: "Optional video/link URL (YouTube supported)", maxlength: "500" });
+    const msg = h("p", { class: "note", role: "status" });
+    const send = h("button", { type: "submit" }, "Post");
+    const form = h("form", { class: "box stack" }, body, link, h("div", { class: "row" }, send), msg);
+    const list = h("div"), more = h("button", { class: "alt", type: "button" }, "Load more");
+    main.append(form, list, more);
+    let page = 0;
+
+    async function load(reset) {
+      if (reset) { page = 0; list.replaceChildren(); }
+      more.disabled = true; more.textContent = "Loading…";
+      const { data, error } = await sb.from("posts")
+        .select("id, body, link_url, created_at, user_id, profiles(username, display_name), likes(user_id)")
+        .order("created_at", { ascending: false }).range(page * PAGE, page * PAGE + PAGE - 1);
+      if (error) { more.disabled = false; more.textContent = "Could not load. Tap to retry"; return; }
+      data.forEach((p) => list.append(postEl(p)));
+      if (page === 0 && !data.length) list.append(h("p", { class: "empty" }, "No posts yet. Be the first to post."));
+      page++; more.disabled = false; more.textContent = "Load more"; more.classList.toggle("hidden", data.length < PAGE);
+    }
+
+    function postEl(p) {
+      const card = h("article", { class: "box" });
+      const name = p.profiles?.display_name || p.profiles?.username || "unknown";
+      let likes = p.likes.map((l) => l.user_id), liked = likes.includes(me.id);
+      const likeBtn = h("button", { class: "alt", type: "button" });
+      const paint = () => { likeBtn.textContent = (liked ? "♥ " : "♡ ") + likes.length; likeBtn.setAttribute("aria-pressed", liked); };
+      paint();
+      likeBtn.onclick = async () => {
+        likeBtn.disabled = true;
+        const { error } = liked ? await sb.from("likes").delete().match({ post_id: p.id, user_id: me.id }) : await sb.from("likes").insert({ post_id: p.id, user_id: me.id });
+        if (!error) { liked = !liked; likes = liked ? [...likes, me.id] : likes.filter((x) => x !== me.id); paint(); }
+        likeBtn.disabled = false;
+      };
+      const row = h("div", { class: "row" }, likeBtn);
+      if (p.user_id === me.id) {
+        row.append(h("button", { class: "alt danger", type: "button", onclick: async () => {
+          if (!confirm("Delete this post?")) return;
+          const { error } = await sb.from("posts").delete().eq("id", p.id);
+          if (error) alert("Could not delete the post."); else card.replaceWith(h("p", { class: "empty" }, "Post deleted."));
+        } }, "Delete"));
+      }
+      card.append(h("div", { class: "meta" }, h("b", {}, name), " @" + (p.profiles?.username || "?") + " · " + when(p.created_at)), h("div", { class: "text" }, p.body));
+      if (p.link_url) card.append(mediaEl(p.link_url));
+      card.append(row); return card;
+    }
+
+    more.onclick = () => load(false);
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const text = body.value.trim(), url = link.value.trim();
+      if (!text) { msg.textContent = "Write something first."; msg.className = "note err"; return; }
+      if (url && !/^https?:\/\//i.test(url)) { msg.textContent = "Links must start with http:// or https://"; msg.className = "note err"; return; }
+      send.disabled = true; msg.textContent = "Posting…"; msg.className = "note";
+      const { error } = await sb.from("posts").insert({ user_id: me.id, body: text, link_url: url || null });
+      send.disabled = false;
+      if (error) { msg.textContent = "Could not post. Please try again."; msg.className = "note err"; return; }
+      body.value = ""; link.value = ""; msg.textContent = ""; load(true);
+    };
+    load(true);
+  }
+
+  /* ----- private messages (direct: sender -> recipient) ----- */
+  async function chats() {
+    const nameIn = h("input", { placeholder: "Start a chat: enter a username", maxlength: "24", "aria-label": "Username to message" });
+    const msg = h("p", { class: "note", role: "status" });
+    const form = h("form", { class: "box stack" }, nameIn, h("button", { type: "submit" }, "Open chat"), msg);
+    const list = h("div", {}, h("p", { class: "empty" }, "Loading…"));
+    main.append(form, list);
+
+    form.onsubmit = async (e) => {
+      e.preventDefault(); msg.className = "note"; msg.textContent = "";
+      const u = nameIn.value.trim().toLowerCase().replace(/^@/, ""); if (!u) return;
+      const { data: other } = await sb.from("profiles").select("id, username, display_name").eq("username", u).maybeSingle();
+      if (!other) { msg.textContent = "No member with that username."; msg.className = "note err"; return; }
+      if (other.id === me.id) { msg.textContent = "You cannot message yourself."; msg.className = "note err"; return; }
+      thread(other);
+    };
+
+    const { data: msgs, error } = await sb.from("messages").select("sender_id, recipient_id, body, created_at")
+      .or(`sender_id.eq.${me.id},recipient_id.eq.${me.id}`).order("created_at", { ascending: false }).limit(300);
+    if (error) { list.replaceChildren(h("p", { class: "empty" }, "Could not load chats. Check your connection and try again.")); return; }
+    if (!msgs.length) { list.replaceChildren(h("p", { class: "empty" }, "No chats yet. Enter a username above to say hello.")); return; }
+    const last = new Map();
+    msgs.forEach((m) => { const o = m.sender_id === me.id ? m.recipient_id : m.sender_id; if (!last.has(o)) last.set(o, m); });
+    const { data: profs } = await sb.from("profiles").select("id, username, display_name").in("id", [...last.keys()]);
+    list.replaceChildren(...[...last].map(([id, m]) => {
+      const p = (profs || []).find((x) => x.id === id) || { id, username: "unknown" };
+      return h("button", { class: "convo", type: "button", onclick: () => thread(p) },
+        h("b", {}, p.display_name || p.username), h("span", {}, (m.sender_id === me.id ? "You: " : "") + m.body.slice(0, 60) + " · " + when(m.created_at)));
+    }));
+  }
+
+  async function thread(other) {
+    main.replaceChildren();
+    const seen = new Set(), box = h("div", { class: "thread" }), msg = h("p", { class: "note", role: "status" });
+    const input = h("input", { placeholder: "Message…", maxlength: "1000", "aria-label": "Message" });
+    const send = h("button", { type: "submit" }, "Send");
+    const blockBtn = h("button", { class: "alt danger", type: "button" }, "Block");
+    let blocked = false;
+    const paintBlock = () => { blockBtn.textContent = blocked ? "Unblock" : "Block"; };
+    const pair = { blocker_id: me.id, blocked_id: other.id };
+    const { data: b } = await sb.from("blocks").select("blocked_id").match(pair).maybeSingle();
+    blocked = !!b; paintBlock();
+    blockBtn.onclick = async () => {
+      const { error } = blocked ? await sb.from("blocks").delete().match(pair) : await sb.from("blocks").insert(pair);
+      if (error) { msg.textContent = "Could not update block."; msg.className = "note err"; }
+      else { blocked = !blocked; paintBlock(); msg.textContent = blocked ? "Blocked. Neither of you can send or read messages here." : "Unblocked."; msg.className = "note"; }
+    };
+    const form = h("form", { class: "row sticky" }, h("div", { style: "flex:1" }, input), send);
+    main.append(h("div", { class: "row", style: "margin-bottom:10px" }, h("button", { class: "alt", type: "button", onclick: () => tab("chats") }, "← Back"),
+      h("b", { style: "flex:1" }, other.display_name || other.username), blockBtn), box, msg, form);
+
+    const add = (m) => {
+      if (seen.has(m.id)) return; seen.add(m.id);
+      box.querySelector(".empty")?.remove();
+      const near = main.scrollHeight - main.scrollTop - main.clientHeight < 140;
+      box.append(h("div", { class: "bub" + (m.sender_id === me.id ? " me" : "") }, m.body, h("small", {}, when(m.created_at))));
+      if (near || m.sender_id === me.id) main.scrollTop = main.scrollHeight;
+    };
+    const { data, error } = await sb.from("messages").select("id, body, sender_id, created_at")
+      .or(`and(sender_id.eq.${me.id},recipient_id.eq.${other.id}),and(sender_id.eq.${other.id},recipient_id.eq.${me.id})`)
+      .order("created_at", { ascending: false }).limit(100);
+    if (error) { msg.textContent = "Could not load messages."; msg.className = "note err"; }
+    else if (!data.length) box.append(h("p", { class: "empty" }, "Say hello."));
+    else data.reverse().forEach(add);
+    channel = sb.channel("dm:" + me.id)
+      .on("postgres_changes", { event: "INSERT", schema: "public", table: "messages", filter: `recipient_id=eq.${me.id}` }, (p) => { if (p.new.sender_id === other.id) add(p.new); })
+      .subscribe();
+
+    form.onsubmit = async (e) => {
+      e.preventDefault(); const body = input.value.trim(); if (!body) return;
+      send.disabled = true;
+      const { data: m, error: err } = await sb.from("messages").insert({ sender_id: me.id, recipient_id: other.id, body }).select("id, body, sender_id, created_at").single();
+      send.disabled = false;
+      if (err) { msg.textContent = "Message not sent. This chat may be unavailable."; msg.className = "note err"; return; }
+      input.value = ""; msg.textContent = ""; add(m);
+    };
+  }
 })();
-</script></body></html>
+</script>
+</body>
+</html>

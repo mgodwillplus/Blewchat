@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="t">
+  <title id="t">BLEWCHAT logo</title>
+  <path d="M24 28h80a12 12 0 0 1 12 12v44a12 12 0 0 1-12 12H72l-24 20V96H24a12 12 0 0 1-12-12V40a12 12 0 0 1 12-12z" fill="#62DDF3"/>
+  <path d="M36 78V50l16 14 12-20 12 20 16-14v28z" fill="#8B5CF6"/>
+  <circle cx="100" cy="42" r="6" fill="#F05265"/>
+</svg>

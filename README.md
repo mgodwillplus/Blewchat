@@ -1,39 +1,34 @@
-# BlewChat
+# BLEWCHAT v1
 
-A mobile-first static social app for GitHub Pages, connected to the separate BlewChat Supabase project.
+*"also another eccentric build from the King"*
 
-## Features in this first version
-- Email/password sign-up and sign-in
-- Profile username, display name, bio and avatar URL
-- Community posts and feed
-- Member search
-- One-to-one direct messages with realtime refresh
-- Block and unblock members
-- Supabase row-level security reference SQL in `schema.sql`
+A mobile-first static web app (plain HTML/JS, no build step) on its own Supabase project, **BlewChat**. No other Supabase project is touched by this app.
 
-## Upload from your phone
-1. Extract `BlewChat.zip`.
-2. Open https://github.com/mgodwillplus/Blewchat
-3. In the Blewchat repository only, choose **Add file → Upload files**.
-4. Upload `index.html`, `README.md`, and `schema.sql` into the repository root and commit. Do not upload these files to MGodwill+.
-5. Go to **Settings → Pages**. Select **Deploy from a branch**, choose your default branch and `/(root)`, then save.
-6. Wait for GitHub Pages to provide the site URL.
+## Setup (the database is already built in the BlewChat project)
+1. Put the supplied `config.js` next to `index.html` (it holds the BlewChat project URL and the **public anon key** only; safe to commit). If you ever rebuild, copy `config.example.js` and fill it in. Never use the `service_role` key.
+2. In Supabase (BlewChat project) → **Authentication → URL Configuration**: set **Site URL** to your deployed address (e.g. `https://YOURNAME.github.io/blewchat/`) and add it under **Redirect URLs**. Verification and password-reset links need this.
+3. **Authentication → Providers → Email**: keep **Confirm email** switched on for real use.
+4. Preview locally with `npx serve .` (or `python3 -m http.server`); deploy with GitHub Pages (**Settings → Pages → Deploy from branch → main / root**).
 
-## Supabase
-The app is preconfigured for the BlewChat project:
-- URL: `https://oyopdidnsaqimshgylmx.supabase.co`
-- The browser key embedded in `index.html` is a publishable key. Never put a secret/service-role key in client code. RLS must protect the tables.
+`supabase/schema.sql` rebuilds the full schema in a fresh, empty BlewChat project only. Do not run it in the live project or any other project.
 
-The core tables and policies were already applied to this project earlier. `schema.sql` is a reference/setup script for a fresh project; do not run it blindly on an existing project. Review the existing tables/policies first.
+## Fonts
+Interface: `--font` at the top of the `<style>` block in `index.html`. Wordmark: the `<style>` block in `assets/wordmark.svg` (system fonts only when loaded as an image).
 
-Check Supabase **Authentication → Providers → Email** is enabled. In **Authentication → URL Configuration**, add the eventual GitHub Pages URL to allowed redirect URLs. If email confirmation is enabled, users need to confirm their email before signing in.
+## In v1
+Intro screen (first visit; tap the header wordmark to replay) · email/password sign-up, verification, sign-in, sign-out, password reset · feed: text posts, YouTube thumbnail with click-to-play and fallback link, likes, delete own post, "Load more" paging · one-to-one realtime messages · block/unblock · row-level security on every table.
 
-## Custom domain
-Once GitHub Pages works, set `blew.chat` in the Blewchat repository's **Settings → Pages**, then configure the DNS records at the domain registrar according to GitHub's current instructions and enable HTTPS after verification.
+## Not yet in v1
+Photo uploads and storage policies · comments · profile and avatar editing · post editing in the interface (database rule exists) · link titles/descriptions · member search beyond exact username · notifications.
 
-## Limitations
-This first version does not include media uploads, likes, comments, group chats, notifications, or an admin/moderation console. Test registration, posting, profile editing, messaging and blocking with two test accounts before inviting others.
+## Test report
+**Tested against the live BlewChat database** (three throwaway accounts, rolled back, nothing left behind):
+- Sign-up creates profiles; username format and length rules; taken/free username check.
+- Posts: only you can publish, edit, delete your own; forged authors rejected; `javascript:` links rejected.
+- Likes: no forging, no duplicates. Profiles: only you can edit yours.
+- Messages: no forged senders; a third account reads, edits and deletes nothing; anonymous direct API calls get nothing.
+- Blocking: blocked and blocker both stopped from sending; thread hidden while blocked; works again after unblock; block helper not callable from the public API.
+- Found and fixed during testing: a blocked user could previously still write messages to the person who blocked them.
+- Security advisor: one intentional warning remains (`username_available` is public on purpose and returns only true/false).
 
-
-## Schema compatibility note
-The frontend uses `posts.body` and `messages.body`, matching the existing BlewChat project. The reference SQL also uses these column names. The existing live tables were inspected; they have RLS enabled. The reference SQL is not a request to recreate or reset the existing database.
+**Not tested yet** (needs a browser and real email): the screens themselves, real verification and reset emails, realtime delivery in two live browsers, YouTube embedding, narrow-Android layout. Please run these after deploying and report anything that fails.
